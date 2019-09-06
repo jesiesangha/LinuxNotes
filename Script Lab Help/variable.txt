@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# this is a comment
+
+echo "Hello, World!"
+
+# Manually setting a variable
+VAR1=value
+echo "The value of VAR1 is : $VAR1"
+
+# Capture value of command output to a variable
+COMMANDOUT=`ls`
+echo "The command output is : $COMMANDOUT"
+
+# Capture input from STDIN / keyboard
+echo "Type something in:"
+read INPUT
+echo "You typed : $INPUT"
+
+# input from the command line options
+echo "You entered $# command line variables"
+echo "The script you ran is $0"
+echo "The first command line variable value is $1"

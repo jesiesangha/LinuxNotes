@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Task 1
+if [ $# -eq 1 ]; then
+	echo "The command line argument value is $1"
+else
+	exit
+fi
+
+
+# Task 2
+case "$1" in
+Night)
+	echo "Day"
+	;;
+Day)
+	echo "Night"
+	;;
+NAIT)
+	echo "SAIT"
+	;;
+*)
+	echo "Hello World!"
+esac
+
+
+# Task 3
+SUM=0
+for COUNTER in {0..100}; do
+	SUM=$[$SUM+$COUNTER]
+	echo "Counter: $COUNTER SUM: $SUM"
+done

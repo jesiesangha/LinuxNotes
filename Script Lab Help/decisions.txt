@@ -1,0 +1,23 @@
+#!/bin/bash
+# demo if-then and case
+
+# if-then statements
+if [ $# -eq 2 ]; then
+	echo "the value of variable 1 is $1"
+	echo "the value of variable 2 is $2"
+else
+	echo "usage: decisions.sh var1 var2"
+fi
+
+# case statement
+case "$1" in
+SAIT)
+	echo "MD113"
+	;;
+NAIT)
+	echo "Edmonton"
+	;;
+*)
+	echo "some other thing happens here"
+esac
+

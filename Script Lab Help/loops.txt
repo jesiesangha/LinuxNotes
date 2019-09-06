@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# while and for loops demod
+
+# while loop
+TEST=0
+COUNT=0
+while [ $TEST -ne 1 ]; do
+	echo "value of TEST is $TEST"
+	echo "value of COUNT is $COUNT"
+	COUNT=$[$COUNT+1]
+	echo "enter a new value for TEST"
+	read TEST
+done
+
+# for loop
+DATA="MD022 MD315 MD321 MD116"
+for ROOM in $DATA; do
+	echo "$ROOM is a room in Stan Grad"
+done
+

@@ -1,0 +1,244 @@
+Jaswinder.localdomain
+ 
+*****  Check VM Setup  *****
+ 
+MemTotal:        5780488 kB
+ ********** 
+processor	: 0
+processor	: 1
+processor	: 2
+processor	: 3
+ ********** 
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 0.0.0.0
+        inet6 fe80::42:c4ff:fec4:93ae  prefixlen 64  scopeid 0x20<link>
+        inet 192.168.153.162  netmask 255.255.255.0  broadcast 192.168.153.255
+        inet6 fe80::2c56:dff6:c141:8ade  prefixlen 64  scopeid 0x20<link>
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+ ********** 
+Disk /dev/sda: 42.9 GB, 42949672960 bytes, 83886080 sectors
+/dev/sda1   *        2048     2050047     1024000   83  Linux
+/dev/sda2         2050048    61988863    29969408   8e  Linux LVM
+ ********** 
+Filesystem                      Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root          11G  3.5G  7.6G  32% /
+devtmpfs                        2.8G     0  2.8G   0% /dev
+tmpfs                           2.8G     0  2.8G   0% /dev/shm
+tmpfs                           2.8G   13M  2.8G   1% /run
+tmpfs                           2.8G     0  2.8G   0% /sys/fs/cgroup
+/dev/sda1                       997M  179M  819M  18% /boot
+/dev/mapper/vg_group-photos      14G   33M   14G   1% /vg_group/photos
+/dev/mapper/centos-opt          4.7G   20M  4.5G   1% /opt
+/dev/mapper/vg_group-documents  3.9G  8.2M  3.7G   1% /vg_group/documents
+/dev/mapper/centos-home         5.7G   31M  5.4G   1% /home
+/dev/mapper/centos-var          3.0G  664M  2.3G  23% /var
+tmpfs                           565M  4.0K  565M   1% /run/user/42
+tmpfs                           565M   40K  565M   1% /run/user/1000
+/dev/sr0                        4.3G  4.3G     0 100% /run/media/admin/CentOS 7 x86_64
+ ********** 
+wheel:x:10:admin
+ 
+*****  Post Install  *****
+
+#
+# /etc/fstab
+# Created by anaconda on Fri Aug 30 08:46:36 2019
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/centos-root /                       xfs     defaults        0 0
+UUID=a2cd0851-fb74-4ed2-af32-39217db4f4e1 /boot                   xfs     defaults        0 0
+/dev/mapper/centos-home /home                   ext4    defaults        1 2
+/dev/mapper/centos-opt  /opt                    ext4    defaults        1 2
+/dev/mapper/centos-var  /var                    xfs     defaults        0 0
+/dev/mapper/centos-swap swap                    swap    defaults        0 0
+
+
+/dev/vg_group/documents /personal/documents ext3 defaults 0 0
+/dev/vg_group/photos  /personal/photos xfs defaults 0 0
+ ********** /dev/sdb 
+Disk /dev/mapper/centos-root: 11.8 GB, 11811160064 bytes, 23068672 sectors
+Disk /dev/mapper/centos-swap: 4194 MB, 4194304000 bytes, 8192000 sectors
+Disk /dev/mapper/centos-home: 6291 MB, 6291456000 bytes, 12288000 sectors
+Disk /dev/mapper/centos-opt: 5242 MB, 5242880000 bytes, 10240000 sectors
+Disk /dev/mapper/centos-var: 3145 MB, 3145728000 bytes, 6144000 sectors
+Disk /dev/mapper/vg_group-documents: 4294 MB, 4294967296 bytes, 8388608 sectors
+Disk /dev/mapper/vg_group-photos: 15.0 GB, 15032385536 bytes, 29360128 sectors
+ ********** ls -l /personal
+total 4
+drwxrwxrwx. 3 root root 4096 Aug 30 09:41 documents
+drwxrwxrwx. 2 root root    6 Aug 30 09:43 photos
+ 
+*****  Skel dir  *****
+Package tree-1.6.0-10.el7.x86_64 already installed and latest version
+ ********** 
+/etc/skel-helpdesk
+├── Documents
+│   ├── Procedure1.txt
+│   └── Report1.txt
+├── Private
+│   ├── Familyphoto.jpg
+│   └── Recipebook.xls
+└── Tickets
+    ├── Template1.txt
+    └── Template2.txt
+
+3 directories, 6 files
+ 
+*****  Users Groups and Passwords  *****
+ ********** group 
+stapsys:x:157:
+stapdev:x:158:
+admin:x:1000:admin
+HelpDesk:x:1001:
+ITM:x:1002:
+bbob:x:1003:
+smae:x:1004:
+lellis:x:1005:
+soz:x:1006:
+dockerroot:x:982:
+ ********** passwd 
+avahi:x:70:70:Avahi mDNS/DNS-SD Stack:/var/run/avahi-daemon:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+admin:x:1000:1000:admin:/home/admin:/bin/bash
+bbob:x:1001:1001:Billy Bob:/home/bbob:/bin/bash
+smae:x:1002:1002:Sara Mae:/home/smae:/bin/bash
+lellis:x:1003:1001:Larry Ellis:/home/lellis:/bin/bash
+soz:x:1004:1002:Sally Oz:/home/soz:/bin/bash
+dockerroot:x:988:982:Docker User:/var/lib/docker:/sbin/nologin
+ ********** shadow 
+avahi:!!:18138::::::
+postfix:!!:18138::::::
+ntp:!!:18138::::::
+tcpdump:!!:18138::::::
+admin:$6$3f/RNfndanJF9vnM$ZwPeo3XH1GSdD0m9ggo9XJX3nDo4Hnpu4WHHzuvgGlc/O3qmP4LAFF.P0K3dGyncYw2SH2xfSf/0OHzIdntZe/::0:99999:7:::
+bbob:$6$zebWf1Y4$0AitLg0gGtICDTyMQvlGp4pwGCqtG5rIp0mK86z5ORwKtuwH9blutYRce8TMpVlVYDoq9ah1EGkntgJfxk1dz/:18138:0:15:7::18292:
+smae:$6$pvFYhum.$gBHdZ2vMMiNchsl7EYeWhVexpuOMIGdCPbSvqDlylmQ.flETCHvB8IFipmKKVC6PWfen1.V5SHR5X5nB6cipC1:18138:0:99999:7:::
+lellis:$6$qoKKxwIG$l9B4h/ULd9RK2LlWHpLEAFkyjbvS/fL7G8NF2zNctWLSJsM1/8A4QNNRzgiLvkopWuPmWczeEWtWTe/7YIsBx/:18138:0:99999:7:::
+soz:$6$/BSmXpAI$ZXHsGJs5s1Wpf3KyZZlx5LOvPFreOccSQGELw4D3NusKfKuOteKcQd1x5FxUeJyDZNs0WMkAAoD1NvQ.EuoZ60:18138:0:99999:7:::
+dockerroot:!!:18138::::::
+ ********** skel application 
+user bbob home directory contents:
+/home/bbob
+
+0 directories, 0 files
+ 
+*****  Chage  *****
+user = bbob
+ ********** 
+Last password change					: Aug 30, 2019
+Password expires					: Sep 14, 2019
+Password inactive					: never
+Account expires						: Jan 31, 2020
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 15
+Number of days of warning before password expires	: 7
+ 
+*****  Firewall  *****
+running
+ ********** running 
+work
+  interfaces: ens33
+work (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: ens33
+  sources: 
+  services: ssh dhcpv6-client http https
+  ports: 
+  protocols: 
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	
+ ********** permanent 
+work
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: ssh dhcpv6-client http https
+  ports: 
+  protocols: 
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	
+ 
+*****  Script *****
+ 
+/root/scripts content
+total 0
+-rw-r--r--. 1 root root 0 Aug 30 10:47 backup.sh
+ 
+finding and outputting script
+ 
+Script name: /root/scripts/backup.sh
+outputting /root/scripts/backup.sh
+ 
+ 
+*****  Cron  *****
+ ********** output /etc/crontab 
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+# For details see man 4 crontabs
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+
+
+0 4 * * mon,tue,wed,thu,fri root /root/scripts/backup.sh
+ ********** output root crontab 
+ 
+*****  Docker software *****
+ 
+Nothing to do
+ 
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)
+   Active: active (running) since Fri 2019-08-30 11:48:55 MDT; 42min ago
+     Docs: http://docs.docker.com
+ Main PID: 73383 (dockerd-current)
+    Tasks: 30
+   CGroup: /system.slice/docker.service
+           ├─73383 /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --default-runtime=docker-runc --exec-opt native.cgroupdriver=systemd --userland-proxy-path=/usr/libexec/docker/docker-proxy-current --init-path=/usr/libexec/docker/docker-init-current --seccomp-profile=/etc/docker/seccomp.json --selinux-enabled --log-driver=journald --signature-verification=false --storage-driver overlay2
+           └─73391 /usr/bin/docker-containerd-current -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --state-dir /var/run/docker/libcontainerd/containerd --shim docker-containerd-shim --runtime docker-runc --runtime-args --systemd-cgroup=true
+
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]: To try something more ambitious, you can run an Ubuntu container with:
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]:  $ docker run -it ubuntu bash
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]: 
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]: Share images, automate workflows, and more with a free Docker ID:
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]:  https://hub.docker.com/
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]: 
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]: For more examples and ideas, visit:
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]:  https://docs.docker.com/get-started/
+Aug 30 11:49:30 Jaswinder.localdomain dockerd-current[73383]: 
+Aug 30 11:49:31 Jaswinder.localdomain dockerd-current[73383]: time="2019-08-30T11:49:31.741220073-06:00" level=warning msg="5f747b4c148a02460083f6e41213594eb850dedf5854786b37ca067b85f8c970 cleanup: failed to unmount secrets: invalid argument"
+ 
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+docker.io/ubuntu        latest              a2a15febcdf3        2 weeks ago         64.2 MB
+docker.io/hello-world   latest              fce289e99eb9        8 months ago        1.84 kB
+ 
+ 
+*****  SSH config  *****
+ 
+#PermitRootLogin no
+# the setting of "PermitRootLogin without-password".
+#ChrootDirectory none
+ 
